@@ -1,14 +1,21 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Problem3190 {
 	
+	static int N, K, L;
+	static int[][] board;
+	static List<int[]> snake = new ArrayList<>();	//참고한 부분
+	static HashMap<Integer, String> map = new HashMap<Integer, String>();
+	
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		int N = scan.nextInt();	//보드의 크기
-		int K = scan.nextInt();	//사과의 개수
-		int[][] board = new int[N][N];
+		N = scan.nextInt();	//보드의 크기
+		K = scan.nextInt();	//사과의 개수
+		board = new int[N][N];
 		int x = 0;
 		int y = 0;
 		for (int i = 0; i < K; i++) {
@@ -17,50 +24,80 @@ public class Problem3190 {
 			board[x-1][y-1] = 1;
 		}
 		
-		int L = scan.nextInt();	//뱀의 방향 변환 횟수
-		//int X = 0;
-		//char C = 0 ;
-		HashMap<String, Object> map = new HashMap<String, Object>();
+		L = scan.nextInt();	//뱀의 방향 변환 횟수
 		for (int i = 0; i < L; i++) {
-			map.put("X"+i, scan.nextInt());		//게임 경과시간
-			map.put("C"+i, scan.next().charAt(0));	//회전 방향
-			//X = scan.nextInt();		
-			//C = scan.next().charAt(0);	//회전 방향
+			map.put(scan.nextInt(), scan.next());		//게임 경과시간, 회전 방향
 		}
 		
+		solve();
 		
-		int l = 1;	//뱀의 길이
-		int cnt = 1;	//시간 소요
-		//board 영역 생성
-		for (int i = 0 ; i < N ; i++) {
-			for (int j = 0 ; j < N; j++) {
-				int X = (int)map.get("X"+j);
-				String C = map.get("C"+j).toString();
-				if (cnt == X) {
-					//방향 전환이 일어남
-					if ( C == "D") {
-						//오른쪽으로 방향 전환 = 왼쪽 90도 회전
-						board[i][j] = board[j][N-1-i];
-					} else if (C == "L") {
-						//왼쪽으로 방향 전환 = 오른쪽 90도 회전
-						board[i][j] = board[N-1-j][i];
-					} else {
-						System.out.println("오류 발생");;
-					}
-					if (board[i][j] == 1) {
-						System.out.println("사과 발견 "+i+","+j);
-					}
-				}
-				if (i == x && j == y) {
-					//사과가 있다!
-					System.out.println("i>> "+i);
-					System.out.println("j>> "+j);
-					l += 1;
-				}
-				cnt += 1;
+		
+	}
+	
+	public static void solve() {
+		int cnt = 0;		//소요 시간
+		int i = 0, j = 0;	
+		int d = 0;			//방향 전환
+		snake.add(new int[] { 0, 0 });	//뱀의 출발 지점
+		
+		while (true) {
+			//증가조건
+			i++; j++; cnt ++;
+			
+			//뱀 이동
+			
+			
+			//종료조건
+			if (isFinish(i, j))
+				break;
+
+			
+			//사과가 있을 때
+			if (board[i][j] == 1) {
+				board[i][j] = 0; 	//사과 비우기
+				snake.add(new int[] { i, j });	//뱀 이동, 길이 늘리기
+				
+			} else {
+				snake.add(new int[] { i, j });	//뱀 이동
+				snake.remove(0);				//뱀 꼬리 자르기
 			}
 			
+			//설정 시간이 지난 후 방향 바꿔주기
+			if (map.containsKey(cnt)) {
+				if (map.get(cnt).equals("D")) {
+					//오른쪽으로 회전
+					d += 1;
+					if (d == 4) d = 0;
+				} else {
+					//왼쪽으로 회전
+					d -= 1;
+					if (d == -1) d = 3;
+					
+				}
+			}
+			
+			
 		}
+		
+		//종료 시간 반환하기
+		System.out.println(cnt);
+	}
+	
+	public static boolean isFinish(int i, int j) {
+		//종료조건1 : 벽과 부딪힘
+		if (i < 0 || j < 0 || i >= N || j >= N) {
+			return true;
+		}
+		
+		//종료조건2 : 자기자신과 부딪힘
+		for (int k = 0; k < snake.size(); k++) {
+			int t[] = snake.get(k);
+			if (i == t[0] && j == t[1]) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 }
