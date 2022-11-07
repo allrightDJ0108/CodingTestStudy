@@ -9,6 +9,8 @@ public class Problem3190 {
 	static int[][] board;
 	static List<int[]> snake = new ArrayList<>();	//참고한 부분
 	static HashMap<Integer, String> map = new HashMap<Integer, String>();
+	static int[] dx = { 0, 1, 0, -1 };				//참고한 부분
+	static int[] dy = { 1, 0, -1, 0 }; 				//참고한 부분
 	
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -37,15 +39,16 @@ public class Problem3190 {
 	public static void solve() {
 		int cnt = 0;		//소요 시간
 		int i = 0, j = 0;	
-		int d = 0;			//방향 전환
+		int d = 0;			//참고한 부분 (방향 전환)
 		snake.add(new int[] { 0, 0 });	//뱀의 출발 지점
 		
 		while (true) {
 			//증가조건
-			i++; j++; cnt ++;
+			cnt ++;
 			
 			//뱀 이동
-			
+			i += dx[d];
+			j += dy[d];
 			
 			//종료조건
 			if (isFinish(i, j))
@@ -55,7 +58,7 @@ public class Problem3190 {
 			//사과가 있을 때
 			if (board[i][j] == 1) {
 				board[i][j] = 0; 	//사과 비우기
-				snake.add(new int[] { i, j });	//뱀 이동, 길이 늘리기
+				snake.add(new int[] { i, j });	//뱀 이동, 뱀 길이 늘리기
 				
 			} else {
 				snake.add(new int[] { i, j });	//뱀 이동
