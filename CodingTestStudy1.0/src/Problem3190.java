@@ -33,6 +33,8 @@ public class Problem3190 {
 		
 		solve();
 		
+		scan.close();
+		
 		
 	}
 	
