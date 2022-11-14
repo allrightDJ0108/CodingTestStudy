@@ -5,22 +5,37 @@ import java.util.Scanner;
 public class Main {
 	
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+Scanner scan = new Scanner(System.in);
 		
-		int H, M;
+		int x, y, N;
 		
-		H = scan.nextInt();
-		M = scan.nextInt();
+		x = scan.nextInt();
+		y = scan.nextInt();
 		
-		if ( (M - 45 >= 0) && (M - 45 < 60) ) {
-			M -= 45; 
-		} else if ( M - 45 < 0) {
-			M = 60+(M - 45);
-			H = (H == 0) ? 23 : (H-1);
-			
-		} 
+		if (x > 0) {
+			N = (y > 0) ? 1 :  4;
+		} else {
+			N = (y > 0) ? 2 :  3;
+		}
 		
-		System.out.println( H+" "+M );
+
+		/*
+		if (x > 0) {
+			if (y > 0) {
+				N = 1;
+			} else {
+				N = 4;
+			}
+		} else {
+			if (y>0) {
+				N = 2;
+			} else {
+				N = 3;
+			}
+		}
+		*/
+		System.out.println(N);
 		scan.close();
+
 	}
 }

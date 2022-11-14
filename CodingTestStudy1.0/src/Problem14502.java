@@ -23,6 +23,11 @@ public class Problem14502 {
 			board.put(i, scan.nextLine());
 		}
 		
+		for (board.Entry<String, Integer> pair : map.entrySet()) {
+		  System.out.println(String.format("Key (name) is: %s, Value (age) is : %s", pair.getKey(), pair.getValue()));
+		}
+		String strArr = board.get(scan);
+		
 		
 		
 		System.out.println();	//얻을 수 있는 안전 영역의 최대크기
