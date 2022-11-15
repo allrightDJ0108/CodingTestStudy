@@ -4,17 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
+public class Problem1157 {
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
 		
 		String str = scan.nextLine();
-		
 		char[] word = str.toCharArray();
-		
 		Map<Character, Integer> map = new HashMap<Character, Integer>();
-		
 		
 		for (int i = 0; i < word.length ; i++){
 			int count = (map.get(Character.toUpperCase(word[i])) == null) ? 0 : (int)map.get(Character.toUpperCase(word[i]));
@@ -45,5 +42,3 @@ public class Main {
 	
 	
 }
-
-
