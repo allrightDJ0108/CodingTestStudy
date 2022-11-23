@@ -2,7 +2,7 @@ package Implementation;
 
 import java.util.Scanner;
 
-public class Main {
+public class Problem11721 {
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
@@ -21,7 +21,4 @@ public class Main {
 		
 		
 	}
-	
 }
-
-
