@@ -1,13 +1,14 @@
 package Implementation;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.StringTokenizer;
 
-public class Main {
+public class Problem2908 {
+	
+	//방법1
+	/*
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -37,10 +38,18 @@ public class Main {
 		
 		return x;
 	}
+	*/
 	
+	//방법2
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer str = new StringTokenizer(br.readLine(), " ");
 		
-}
-
+		int A = Integer.parseInt(new StringBuilder(str.nextToken()).reverse().toString());
+		int B = Integer.parseInt(new StringBuilder(str.nextToken()).reverse().toString());
+		
+		System.out.println(A > B ? A : B);	
+	}
 	
-
-
+}
