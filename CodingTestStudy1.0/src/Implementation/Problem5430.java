@@ -1,13 +1,13 @@
 package Implementation;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main {
+public class Problem5430 {
+	//2022.12.07 시간초과로 실패
 	public static void main(String[] args) throws IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -92,7 +92,3 @@ public class Main {
 	}
 	
 }
-
-	
-
-
