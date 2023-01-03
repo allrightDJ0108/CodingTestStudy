@@ -1,11 +1,10 @@
 package Implementation;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+public class Problem1712 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -31,10 +30,26 @@ public class Main {
 		
 		System.out.println(N);
 		
+		
+		//반복문으로 시도했으나 시간초과 에러
+		/*
+		 while (true) {
+			//총 수입 = C * N
+			//총 비용 = A + (B * N)
+			N++;
+			
+			if ((C * N) - (A + (B * N)) > 0) {
+				System.out.println(N);
+				break;
+			}
+			
+			if (N > 2100000000) {
+				System.out.println(-1);
+				break;
+			}
+			
+		}
+		 */
+		
 	}
-	
 }
-
-	
-
-
