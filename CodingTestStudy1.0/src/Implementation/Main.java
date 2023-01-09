@@ -9,46 +9,29 @@ import java.util.Map;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
+		//2775 푸는중
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		Map<Integer, String> map = new HashMap<Integer, String>();
 		int T = Integer.parseInt(br.readLine());
+		Map<Integer, String> map = new HashMap<Integer, String>();
 		
 		for (int i=0;i<T;i++) {
-			map.put(i, br.readLine());
+			map.put(i,br.readLine()+" "+ br.readLine());
 		}
 		
 		for (int i=0;i<T;i++) {
 			String[] str = map.get(i).split(" ");
+			int k = Integer.parseInt(str[0]);	//층
+			int n = Integer.parseInt(str[1]);	//호
 			
-			System.out.println(hotelFn(Integer.parseInt(str[0]), Integer.parseInt(str[1]), Integer.parseInt(str[2])));
+			//한 층에 사는 사람
+			int sum = n * (n+1) / 2 * k;
+			
 		}
 		
+		System.out.println(map);
 	}
 	
-	static String hotelFn(int H, int W, int N) {
-		
-		int x, y;		//x는 층, y는 호수
-		
-		if (N % H == 0) {
-			x = H;
-			y = N / H;
-		}
-		else {
-			x = N % H;	
-			y = (N / H) + 1;
-		}
-		
-		StringBuilder sb = new StringBuilder();
-		sb.append(x);
-		if (y < 10) {
-			sb.append(0);
-		}
-		sb.append(y);
-		
-		
-		return sb.toString();
-	}
 	
 }
 
