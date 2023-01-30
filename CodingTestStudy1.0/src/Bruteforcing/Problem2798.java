@@ -9,7 +9,6 @@ import java.util.StringTokenizer;
 
 public class Problem2798 {
 	public static void main(String[] args) throws IOException {
-		//2798(브루트포스 알고리즘) 푸는중
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		StringTokenizer str1 = new StringTokenizer(br.readLine());
@@ -18,9 +17,26 @@ public class Problem2798 {
 		int N = Integer.parseInt(str1.nextToken());
 		int M = Integer.parseInt(str1.nextToken());
 		
+		//3중 for문 이용
+		int sum = 0;
+		int max = 0;
+		
+		for (int i=0; i<N; i++) {
+			for (int j=i+1; j<N ; j++) {
+				for (int k=j+1; k<N; k++) {
+					sum = Integer.parseInt(str2[k]) + Integer.parseInt(str2[j]) + Integer.parseInt(str2[i]);
+					if (sum <= M && max < sum) {
+							max = sum;
+					}
+				}
+			}
+		}
+		
+		System.out.println(max);
 		
 		
-		//3중for문으로 다시 생각해보기
+		//처음 시도했던 방법(오답)
+		/*
 		Arrays.sort(str2, Collections.reverseOrder());
 		
 		int index=0;	//배열 인덱스
@@ -57,6 +73,6 @@ public class Problem2798 {
 		
 		
 		System.out.println(result);
-		
+		*/
 	}
 }
