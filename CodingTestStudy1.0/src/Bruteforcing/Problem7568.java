@@ -27,6 +27,23 @@ public class Problem7568 {
 		
 	}
 	
+	//정답버전
+	static void func() {
+		
+		for (int i=0; i<N; i++) {
+			int rank = 1;
+			for (int j=0; j<N; j++) {
+				if (X[i] < X[j] && Y[i] < Y[j]) {
+						rank++;
+				}
+			}
+			
+			System.out.print(rank + " ");
+		}
+		
+	}
+	//다정버전(오답)
+	/*
 	static void func() {
 		int max = 0;
 		int min = 0;
@@ -62,4 +79,5 @@ public class Problem7568 {
 			System.out.print(rank[i]+" ");
 		}
 	}
+	*/
 }
