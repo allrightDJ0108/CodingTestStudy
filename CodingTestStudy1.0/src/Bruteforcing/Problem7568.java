@@ -1,13 +1,11 @@
-package Implementation;
-
+package Bruteforcing;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
-	
+public class Problem7568 {
 	static int N;
 	static int[] X,Y;
 	
@@ -30,21 +28,38 @@ public class Main {
 	}
 	
 	static void func() {
+		int max = 0;
+		int min = 0;
+		int temp = 0;
 		
 		for (int i=0; i<N; i++) {
-			int rank = 1;
-			for (int j=0; j<N; j++) {
-				if (X[i] < X[j] && Y[i] < Y[j]) {
-						rank++;
+			for (int j=i+1; j<N; j++) {
+				if (X[i] < X[j]) {
+					if (Y[i] < Y[j]) {		//덩치가 더 큼
+						max = j;
+					} else {				//덩치를 비교할 수 없음
+						temp++;
+					}
+				} else {	
+					if (Y[i] > Y[j]) { 		//덩치가 더 작음
+						min = j;
+					} else {
+						temp++;
+					}
 				}
 			}
 			
-			System.out.print(rank + " ");
 		}
 		
+		int[] rank = new int[N];
+		for (int i=0;i<N;i++) {
+			rank[i] = 2;
+		}
+		rank[max] = 1;
+		rank[min] = N;
+		
+		for (int i=0;i<N;i++) {
+			System.out.print(rank[i]+" ");
+		}
 	}
-	
 }
-	
-
-
