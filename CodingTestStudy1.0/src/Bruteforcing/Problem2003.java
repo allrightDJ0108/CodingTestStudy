@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 
 public class Problem2003 {
 	
-	//230211 미완성 : 투포인터 알고리즘으로 다시풀기
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -22,6 +21,31 @@ public class Problem2003 {
 		for (int i=0; i<stArr.length; i++) {
 			arr[i] = Integer.parseInt(stArr[i]);
 		}
+		
+		//230213 투포인터 풀이
+		int start = 0;
+		int end = 0;
+		int sum = 0;
+		int cnt = 0;
+		
+		while(start < N) {
+			
+			if (sum > M || end == N) {
+				//sum이 M을 초과하거나, end가 범위를 벗어나는 경우 : start를 오른쪽으로 이동, sum에서 -
+				sum -= arr[start++];
+			} else {
+				//end를 오른쪽으로 이동시키면서 sum 구함
+				sum += arr[end++];
+			}
+			
+			if (sum == M) cnt++;
+			
+		}
+		
+		System.out.println(cnt);
+		
+		//230211 미완성 풀이
+		/*
 		
 		int cnt = 2; //몇개 조합으로 합을 구할지
 		int result = 0;
@@ -47,6 +71,7 @@ public class Problem2003 {
 		}
 		
 		System.out.println(result);
+		*/
 			
 	}
 }
