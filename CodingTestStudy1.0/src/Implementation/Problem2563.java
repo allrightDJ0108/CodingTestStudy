@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Problem2563 {
-	//230213 막혔다,,,
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -19,7 +18,7 @@ public class Problem2563 {
 			int x = Integer.parseInt(str.nextToken());
 			int y = Integer.parseInt(str.nextToken());
 			
-			for (int a=x; a<x+10; x++) {
+			for (int a=x; a<x+10; a++) {
 				for (int b=y; b<y+10; b++) {
 					arr[a][b] = 1;
 				}
