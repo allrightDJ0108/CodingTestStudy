@@ -14,8 +14,7 @@ public class Problem3040 {
 			arr[i] = Integer.parseInt(br.readLine());
 		}
 		
-		int x = 0;
-		int y = 0;
+		//int x = 0; int y = 0;
 		
 		for (int i=0; i<9; i++) {
 			for (int j=i+1; j<9; j++) {
@@ -28,8 +27,9 @@ public class Problem3040 {
 					index++;
 				}
 				if (sum == 100) {
-					x = arr[i];
-					y = arr[j];
+					//x = arr[i]; y = arr[j];
+					arr[i] = 0; arr[j] = 0;
+					
 				}
 			}
 			
@@ -37,7 +37,8 @@ public class Problem3040 {
 		
 		StringBuilder str = new StringBuilder();
 		for (int i=0; i<9; i++) {
-			if (arr[i] != x && arr[i] != y ) {
+			//if (arr[i] != x && arr[i] != y ) {
+			if (arr[i] != 0 ) {
 				str.append(arr[i]).append("\n");
 			}
 		}
