@@ -3,10 +3,10 @@ package Stack;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Stack;
+import java.util.StringTokenizer;
 
-public class Problem9012 {
-	//최종 제출 방식(stack 이용)
+public class Problem9012_new {
+	//처음 시도한 방식
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -15,25 +15,29 @@ public class Problem9012 {
 	    for (int i=0; i<T; i++){
         String testCase = br.readLine();
 
+        String[] arr = testCase.split("");
+        int[] stack = new int[arr.length];
+        int index = 0;
+
         String result = "NO";
         //테스트케이스 시작
-        Stack <Integer> stack = new Stack<>();
-        for (int j=0; j<testCase.length(); j++){
-          if (testCase.charAt(j) == '('){
-            stack.push(1);
+        for (int j=0; j<arr.length; j++){
+          if (arr[j].equals("(")){
+            stack[index] = 1;
+            index++;
           } else {
-            if (stack.empty()){
-              stack.push(1);
-              //result = "NO";
-              break;
+            if (index > 0){
+              stack[index] = 0;
+              index--;
             } else {
-              stack.pop();
+              index = -99;
+              j = arr.length;
             }
-
+            
           }
-          
         }
-        if (stack.empty()) result = "YES";
+
+        if (index == 0) result = "YES";
         System.out.println(result);
         //테스트케이스 종료
       } 
