@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Problem25206_new {
+	//다정 수정 풀이
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -11,30 +12,29 @@ public class Problem25206_new {
 		String subNm = "";
 		double  grade = 0;
 		String score = "";
-		double  total = 20;
+		double  total = 0;
 		double  sum = 0;
+		String[] scoreList = {"A+", "A0", "B+", "B0", "C+", "C0", "D+", "D0", "F", "P"};
+		double[] gradeList = {4.5, 4.0, 3.5, 3.0, 2.5, 2.0, 1.5, 1.0, 0.0, 0.0};
 		for (int i=0; i<20; i++) {
 			str = new StringTokenizer(br.readLine(), " ");
 			
 			subNm = str.nextToken();
-			grade = Double.parseDouble(br.readLine());
+			grade = Double.parseDouble(str.nextToken());
 			score = str.nextToken();
-			switch (score) {
-			case "A+" : sum += 4.5 * grade;
-			case "A0" : sum += 4.0 * grade;
-			case "B+" : sum += 3.5 * grade;
-			case "B0" : sum += 3.0 * grade;
-			case "C+" : sum += 2.5 * grade;
-			case "C0" : sum += 2.0 * grade;
-			case "D+" : sum += 1.5 * grade;
-			case "D0" : sum += 1.0 * grade;
-			case "F" : sum += 0.0 * grade;
-			case "P" : total--;
+			
+			for (int j=0; j<scoreList.length; j++) {
+				if (score.equals(scoreList[j])) {
+					sum += gradeList[j] * grade;
+					if (j != scoreList.length-1) {
+						total += grade;
+					}
+				}
 			}
 			
 		}
 		
 		double result = sum / total;
-		System.out.println(result);
+		System.out.printf("%.6f\n", result);
 	}
 }

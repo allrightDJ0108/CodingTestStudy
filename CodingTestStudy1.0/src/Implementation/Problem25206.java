@@ -4,34 +4,38 @@ import java.io.*;
 import java.util.*;
 
 public class Problem25206 {
-	//230302 넘버포맷 에러 어떻게 하지ㅠㅠ
+	//다정 처음 풀이
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		StringTokenizer str;
 		String subNm = "";
-		double  grade = 0;
+		double  grade = 0.0;
 		String score = "";
-		double  total = 20;
-		double  sum = 0;
-		String[] scoreList = {"A+", "A0", "B+", "B0", "C+", "C0", "D+", "D0", "F", "P"};
-		double[] gradeList = {4.5, 4.0, 3.5, 3.0, 2.5, 2.0, 1.5, 1.0, 0.0, 0.0};
+		double  total = 0.0;
+		double  sum = 0.0;
 		for (int i=0; i<20; i++) {
 			str = new StringTokenizer(br.readLine(), " ");
 			
 			subNm = str.nextToken();
-			grade = Double.parseDouble(br.readLine());
+			grade = Double.parseDouble(str.nextToken());
 			score = str.nextToken();
-			
-			for (int j=0; i<scoreList.length; j++) {
-				if (score.equals(scoreList[j])) {
-					sum += gradeList[j] * grade;
-				}
+			switch (score) {
+			case "A+" : sum += 4.5 * grade; break;
+			case "A0" : sum += 4.0 * grade; break;
+			case "B+" : sum += 3.5 * grade; break;
+			case "B0" : sum += 3.0 * grade; break;
+			case "C+" : sum += 2.5 * grade; break;
+			case "C0" : sum += 2.0 * grade; break;
+			case "D+" : sum += 1.5 * grade; break;
+			case "D0" : sum += 1.0 * grade; break;
+			case "F" : sum += 0.0 * grade; break;
+			case "P" : grade = 0; break;
 			}
+			total += grade;
 			
 		}
-		
 		double result = sum / total;
-		System.out.println(result);
+		System.out.printf("%.6f\n", result);
 	}
 }
