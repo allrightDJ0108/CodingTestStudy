@@ -6,7 +6,8 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Problem1934 {
-	//다정 푸는중
+	//유클리드 호제법 이용
+	//[A * B / 최대공약수 = 최소공배수]를 이용하기 위해 최대공약수부터 구함
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -18,26 +19,13 @@ public class Problem1934 {
 			int A = Integer.parseInt(str.nextToken());
 			int B = Integer.parseInt(str.nextToken());
 			
-			int result = 0;
-			
-			if (A == 1) {
-				result = B;
-			} else if (B == 1) {
-				result = A;
-			} else {
-				System.out.println("%%");
-				result = A*B;
-				for (int a=1; a<=result; a++) {
-					for (int b=1; b<=result; b++) {
-						if (A * a == B * b) {
-							result = A * a;
-							break;
-						}
-					}
-				}
-			}
-			
-			System.out.println(result);
+			System.out.println(A * B / gcd(A,B));
 		}
+	}
+	
+	//최대공약수 구하는 함수
+	public static int gcd(int a, int b) {
+		if (b == 0) return a;
+		return gcd(b, a%b);		//재귀를 이용한 최대공약수 구하기
 	}
 }
