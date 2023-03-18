@@ -7,7 +7,7 @@ public class Problem2606 {
 	static HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
 	static int[] visited;
 	static int R = 1;
-	//static Queue<Integer> q = new LinkedList<Queue>(;)
+	static Queue<Integer> q = new LinkedList<Integer>();
 	public static void main (String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -31,10 +31,11 @@ public class Problem2606 {
 		
 		visited = new int[N+1];
 		//dfsFn(R);
+		bfsFn(R);
 
 		int cnt = 0;
 		for (int i=0; i<visited.length; i++) {
-			if (visited[i] == 1) cnt++;
+			if (i != 1 && visited[i] == 1) cnt++;
 		}
 		System.out.println(cnt);
 	}
@@ -53,6 +54,18 @@ public class Problem2606 {
 	}
 	
 	static void bfsFn(int R) {
+		visited[R] = 1;
+		q.add(R);
 		
+		while(!q.isEmpty()) {
+			int cur = q.poll();
+			for (int i=0; i<map.get(cur).size(); i++) {
+				int temp = map.get(cur).get(i);
+				if (visited[temp] == 0) {
+					q.add(temp);
+					visited[temp] = 1;
+				}
+			} 
+		}
 	}
 }
