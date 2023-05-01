@@ -11,29 +11,18 @@ public class Problem2851 {
 		int N;
 		int sum = 0;
 		int prevSum = 0;
-		int result = 0;
 		
 		for (int i=0; i<10; i++) {
 			N = Integer.parseInt(br.readLine());
 			prevSum = sum;
 			sum += N;
-			if (sum == 100) {
-				result = sum;
-				i=99;
-			} else if (sum > 100) {
-				int a = Math.abs(prevSum - 100);
-				int b = Math.abs(sum - 100);
-				if (a < b){
-					result = prevSum;
-				} else if (a == b ) {
-					result = sum;
-				} else {
-					result = sum;
-				}
-				i=99;
+			
+			if (Math.abs(prevSum - 100) < Math.abs(sum - 100)) {
+				sum = prevSum;
+				break;
 			}
 		}
 		
-		System.out.println(result);
+		System.out.println(sum);
 	}
 }
