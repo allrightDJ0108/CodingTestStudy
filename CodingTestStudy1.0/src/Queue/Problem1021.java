@@ -6,8 +6,8 @@ import java.util.*;
 public class Problem1021 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		Deque<Integer> dq = new LinkedList<Integer>();
 		Queue<Integer> q = new LinkedList<Integer>();
+		LinkedList<Integer> list = new LinkedList<Integer>();
 
 		StringTokenizer str = new StringTokenizer(br.readLine());
 
@@ -16,25 +16,34 @@ public class Problem1021 {
 
 		str = new StringTokenizer(br.readLine());
 
-		for (int i=0; i<M; i++) {
+		for (int i = 0; i < M; i++) {
 			q.add(Integer.parseInt(str.nextToken()));
 		}
 
-		for (int i=1; i<=N; i++) {
-			dq.add(i);
+		for (int i = 1; i <= N; i++) {
+			list.add(i);
 		}
 
 		int cnt = 0;
-		while(!q.isEmpty()) {
+		for (int i = 0; i < M; i++) {
 			int qCur = q.poll();
-			int dqCur = dq.pollFirst();
-			if (qCur != dqCur) {
-				dq.addLast(dqCur);
-				cnt++;
+			
+			if (list.indexOf(qCur) <= list.size() / 2) {
+				while(qCur != list.getFirst()) {
+					int dqCur = list.removeFirst();
+					list.add(dqCur);
+					cnt++;
+				}
+			} else {
+				while(qCur != list.getFirst()) {
+					int dqCur = list.removeLast();
+					list.addFirst(dqCur);
+					cnt++;
+				}
 			}
+			list.remove();	//첫번째 값 제거
 		}
 		System.out.println(cnt);
 	}
-
 
 }
