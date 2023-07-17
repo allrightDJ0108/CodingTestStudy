@@ -51,17 +51,19 @@ public class Problem16918 {
 			
 		}
 		
+		StringBuilder sb = new StringBuilder();
 		for (int i=0; i<R; i++) {
 			for (int j=0; j<C; j++) {
 				if (arr[i][j] == 0) {
-					System.out.print(".");
+					sb.append(".");
 				} else {
-					System.out.print("O");
+					sb.append("O");
 				}
 				
 			}
-			System.out.println();
+			sb.append("\n");
 		}
+		System.out.println(sb);
 		
 	}
 	
