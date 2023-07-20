@@ -5,6 +5,7 @@ import java.io.*;
 public class ch08_02 {
 	//Ch.08 다이나믹 프로그래밍 Dynamic Programming DP
 	// 1로 만들기
+	// 내가 푼 방법
 	
 	static int cnt = 0;
 	

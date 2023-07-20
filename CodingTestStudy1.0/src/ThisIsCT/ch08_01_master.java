@@ -1,7 +1,5 @@
 package ThisIsCT;
 
-import java.util.*;
-
 public class ch08_01_master {
 	// Ch.08 다이나믹 프로그래밍 Dynamic Programming DP
 	// 피보나치 수열
