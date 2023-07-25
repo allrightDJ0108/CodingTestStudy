@@ -22,7 +22,6 @@ public class Problem17143 {
 
 		sharkInfo = new int[M + 1][3];
 		map = new int[R + 1][C + 1];
-		temp = new int[R + 1][C + 1];
 
 		for (int i = 1; i < M + 1; i++) {
 			str = new StringTokenizer(br.readLine());
@@ -57,6 +56,7 @@ public class Problem17143 {
 
 			}
 
+			temp = new int[R + 1][C + 1];
 			// 상어의 이동
 			sharkFunc();
 			// 새로 변경된 temp배열을 map에 밀어넣기
@@ -66,6 +66,8 @@ public class Problem17143 {
 				}
 			}
 		}
+		
+		System.out.println(result);
 
 	}
 
@@ -74,6 +76,10 @@ public class Problem17143 {
 		for (int i = 1; i <= R; i++) {
 			for (int j = 1; j <= C; j++) {
 				if (map[i][j] != 0) {
+					/**
+					 * A B C D E F G H
+					 * 1 2 3 4 5 6 7 8
+					 */
 					int sharkNum = map[i][j];
 					int s = sharkInfo[sharkNum][0]; // 상어의 속도
 					int d = sharkInfo[sharkNum][1]; // 상어의 방향
@@ -87,30 +93,42 @@ public class Problem17143 {
 	static void moovingFunc(int sn, int s, int d, int x, int y) {
 
 		int nx = 0, ny = 0;
-		for (int i = 0; i < s; i++) {
-			nx = x + dir[d][0];
-			ny = y + dir[d][1];
+		if (s == 0) {
+			nx = x; ny = y;
+		} else {
+			for (int i = 0; i < s; i++) {
+				nx = x + dir[d][0];
+				ny = y + dir[d][1];
 
-			if (!(nx >= 1 && ny >= 1 && nx <= R && ny <= C)) {
-				if (d == 1)
-					d = 2;
-				if (d == 2)
-					d = 1;
-				if (d == 3)
-					d = 4;
-				if (d == 4)
-					d = 3;
-				i--;
-			} else {
-				x = nx;
-				y = ny;
+				if (nx < 1 || ny < 1 || nx > R || ny > C) {
+					if (d == 1)
+						d = 2;
+					else if (d == 2)
+						d = 1;
+					else if (d == 3)
+						d = 4;
+					else if (d == 4)
+						d = 3;
+					i--;
+				} else {
+					x = nx;
+					y = ny;
+				}
 			}
 		}
+		
 		sharkInfo[sn][1] = d;
 
 		// 같은 칸에 상어가 두마리면 큰 상어만 남음
-		if (temp[nx][ny] != 0 && temp[nx][ny] > sn) {
-			temp[nx][ny] = temp[nx][ny];
+		if (temp[nx][ny] != 0 ) {
+			int tn = temp[nx][ny];
+			if (sharkInfo[tn][2] > sharkInfo[sn][2]) {
+				//원래 있던 상어가 더 큰 경우
+				temp[nx][ny] = temp[nx][ny];
+			} else {
+				//새로 온 상어가 더 큰 경우
+				temp[nx][ny] = sn;
+			}
 		} else {
 			temp[nx][ny] = sn;
 		}
