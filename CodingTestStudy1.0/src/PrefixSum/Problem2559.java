@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package PrefixSum;
 
 import java.io.*;
 import java.util.*;
