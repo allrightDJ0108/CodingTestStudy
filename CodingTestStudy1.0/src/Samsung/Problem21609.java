@@ -237,29 +237,40 @@ public class Problem21609 {
 
 	// 중력 작용 함수
 	static void gravityFunc() {
-		for (int i = 0; i < N; ++i) {
-			// 가장 아래에서(N-1) 바로 윗 칸(N-1)에서 시작
-			for (int j = N - 2; j >= 0; --j) {
-				if (map[j][i] == -1) {
+		for (int j = 0; j < N; j++) {			//열 고정
+			for (int i = N - 2; i >= 0; i--) {	//행 이동
+				//현재 칸이 빈칸인 경우 SKIP
+				if (map[i][j] == -2) {
 					continue;
 				}
-				if (map[j][i] == -2) {
+				//현재 칸이 검정 블록이면 SKIP
+				if (map[i][j] == -1) {
 					continue;
 				}
-
-				int dest = j + 1;
-				while (true) {
-					if (dest == N)
+				
+				int temp = i + 1;	//현재 칸의 다음 칸
+				while(true) {
+					
+					if (map[temp][j] == -2) { //다음 칸이 빈칸인 경우 행 크기 증가
+						temp++;
+					} else {	//다음 칸이 빈칸이 아닐 경우 반복문 종료
 						break;
-					if (map[dest][i] == -2)
-						dest++;
-					else
+					}
+					
+					if (temp == N) { //가장 끝 칸에 도달한 경우 반복문 종료
 						break;
+					}
+					
 				}
-				if (dest == j + 1)
+				
+				if (temp == i + 1) {
+					//행 크기가 처음과 동일한 경우 미이동
 					continue;
-				map[dest - 1][i] = map[j][i];
-				map[j][i] = -2;
+				}
+				
+				//이동
+				map[temp-1][j] = map[i][j];//인덱스 맞추기 위해 -1
+				map[i][j] = -2;
 			}
 		}
 	}
