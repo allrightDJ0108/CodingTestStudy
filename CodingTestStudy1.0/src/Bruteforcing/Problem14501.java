@@ -3,35 +3,39 @@ package Bruteforcing;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Problem14501 {
-	//완전탐색을 풀고있었는데 DP가 나왔다,,, 마음의 준비가 안됐다,,,
-	//준비가 되면 풀어야지..^^;
-	//230525 다시 끄적이다가 도망감 ㅎㅎ
+	// 230817 풀이완료
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
+
 		int N = Integer.parseInt(br.readLine());
-		int[][] arr = new int[N][2];
+		
+		StringTokenizer str;
+		int[] t = new int[N];
+		int[] p = new int[N];
 		
 		for (int i=0; i<N; i++) {
-			String[] str = br.readLine().split(" ");
-			arr[i][0] = Integer.parseInt(str[0]);		//T
-			arr[i][1] = Integer.parseInt(str[1]);		//P
-				
+			str = new StringTokenizer(br.readLine(), " ");
+			t[i] = Integer.parseInt(str.nextToken());
+			p[i] = Integer.parseInt(str.nextToken());
 		}
 		
-		int sum = 0;
+		int[] dp = new int[N+1];
+		
 		for (int i=0; i<N; i++) {
-			int T = arr[i][0];
-			int P = arr[i][1];
-			for (int j=i; j<N; j++) {
-				int Tb = arr[j][0];
+			int tt = t[i];
+			int tp = p[i];
+			
+			if (i + tt <= N) {
+				dp[i + tt] = Math.max(dp[i+tt], tp + dp[i] );
 			}
 			
+			dp[i+1] = Math.max(dp[i+1], dp[i]);
 		}
-		
-		System.out.println(sum);
-		
+
+		System.out.println(dp[N]);
+
 	}
 }
