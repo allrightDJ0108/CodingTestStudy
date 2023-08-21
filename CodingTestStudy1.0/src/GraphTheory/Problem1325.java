@@ -9,6 +9,7 @@ public class Problem1325 {
 	static int[] visited;
 	static int[] result;
 	static ArrayList<Integer>[] list;
+	static Queue<Integer> q = new LinkedList<>();
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,10 +34,18 @@ public class Problem1325 {
 		}
 
 		// DFS
+		/*
 		for (int i = 1; i < N + 1; i++) {
 			visited = new int[N + 1];
 			visited[i] = 1;
 			dfsFn(i);
+		}
+		*/
+
+		// BFS
+		for (int i = 1; i < N + 1; i++) {
+			visited = new int[N + 1];
+			bfsFn(i);
 		}
 
 		// 해킹 가능 최대개수
@@ -61,6 +70,23 @@ public class Problem1325 {
 				result[temp] += 1;
 				visited[temp] = 1;
 				dfsFn(temp);
+			}
+		}
+	}
+
+	static void bfsFn(int t) {
+		q.add(t);
+		visited[t] = 1;
+		
+		while (!q.isEmpty()) {
+			int cur = q.poll();
+			
+			for (int temp : list[cur]) {
+				if (visited[temp] == 0) {
+					result[temp] += 1;
+					q.add(temp);
+					visited[temp] = 1;
+				}
 			}
 		}
 	}
