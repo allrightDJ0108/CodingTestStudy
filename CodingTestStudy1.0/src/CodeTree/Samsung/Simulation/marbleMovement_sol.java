@@ -63,7 +63,6 @@ public class marbleMovement_sol {
                 new Tuple(-v, -(i + 1), dirMapper[d])
             );
             
-            //System.out.println((r-1) + " " + (c-1) + " " + v + " "+(i+1)+" "+dirMapper[d]);
         }
         
         // t초에 걸쳐 시뮬레이션을 반복합니다.
@@ -103,12 +102,10 @@ public class marbleMovement_sol {
     public static void moveAll() {
         for(int x = 0; x < n; x++)
             for(int y = 0; y < n; y++) {
-            	//System.out.println("======="+(x+1)+" "+(y+1)+" "+grid[x][y].size());
                 for(int i = 0; i < (int) grid[x][y].size(); i++) {
                     int v = grid[x][y].get(i).x;
                     int num = grid[x][y].get(i).y;
                     int moveDir = grid[x][y].get(i).z;
-                    //System.out.println("=======" + v + " " + num + " " + moveDir);
                     
                     int nextX, nextY, nextDir;
                     // v값이 음수이므로, -를 붙여 넘겨줍니다.
