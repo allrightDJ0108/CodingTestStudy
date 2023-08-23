@@ -26,7 +26,7 @@ public class Problem1699 {
 			//1의 제곱수로만 표현할 수 있는 개수 최소화
 			dp[i] = i;
 			for (int j = 1; num[j] <= i; j++) {
-				//N에 가장 가까운 제곱수를 뺀 dp값 - 1
+				//N에 가장 가까운 제곱수를 뺀 dp값 + 1
 				dp[i] = Math.min(dp[i - num[j]] + 1, dp[i]);
 				// 처음 세웠던 점화식(오답)
 				// dp[i] = Math.min(i / num[j] + i % num[j], dp[i]);
