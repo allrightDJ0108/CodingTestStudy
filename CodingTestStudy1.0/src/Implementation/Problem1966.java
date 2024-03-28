@@ -6,8 +6,6 @@ import java.util.*;
 public class Problem1966 {
 
     static int T, N, M;
-    static Queue<Integer> q = new LinkedList<>();
-
 
     public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,18 +17,20 @@ public class Problem1966 {
             N = Integer.parseInt(str.nextToken());
             M = Integer.parseInt(str.nextToken());
 
-            int[] arr = new int[N];//우선순위를 저장
+            int[] arr = new int[N]; //우선순위를 저장
+            Queue<Integer> q = new LinkedList<>();
+
             str = new StringTokenizer(br.readLine());
             for (int i=0; i<N; i++){
                 arr[i] = Integer.parseInt(str.nextToken());
                 q.add(i);
             }
 
-            func(arr);
+            func(arr, q);
         }
     }
 
-    static void func(int[] arr){
+    static void func(int[] arr, Queue<Integer> q){
 
         int cnt = 1;
         int[] visited = new int[arr.length];
