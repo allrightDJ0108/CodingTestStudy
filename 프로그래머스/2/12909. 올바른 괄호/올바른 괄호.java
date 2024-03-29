@@ -7,16 +7,17 @@ class Solution {
         char[] arr = s.toCharArray();
         if (arr[0] == ')' || arr[arr.length-1] == '(') return answer;
         
-        int open = 0;
-        int close = 0;
+        // int open = 0;
+        // int close = 0;
+        int count = 0;
         for (int i=0; i<arr.length; i++){
-            if (arr[i] == '(') open++;
-            else close++;
+            if (arr[i] == '(') count++;
+            else count--;
             
-            if (open < close) return answer;
+            if (count < 0) return answer;
         }
         
-        if (open == close) answer = true;
+        if (count == 0) answer = true;
 
         return answer;
     }
