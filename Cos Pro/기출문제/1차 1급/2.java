@@ -8,7 +8,7 @@ import java.util.LinkedList;
 class Solution {
 
     static int[] dt = {1,2,3,4};
-    static int[][] dir = {{1,0}, {0,-1}, {-1,0}, {0,1}};
+    static int[][] dir = {{0,1}, {1,0}, {0,-1}, {-1,0}}; //우, 하, 좌, 상
     public int solution(int n) {
         int answer = 0;
 
@@ -18,7 +18,7 @@ class Solution {
         Queue<int[]> q = new LinkedList<>();
         q.add(new int[]{0,0});
         arr[0][0] = 1;
-        int d = 3;
+        int d = 0;
         int mark = 0;
 
         while (!q.isEmpty()){
@@ -29,8 +29,7 @@ class Solution {
             int nx = cx + dir[d][0];
             int ny = cy + dir[d][1];
             if (nx < 0 || nx >= n || ny < 0 || ny >= n || arr[nx][ny] != 0 ) {
-                d = d + 1;
-                if (d == 4) d = 0;
+                d = (d + 1) % 4;
                 q.add(new int[]{cx, cy});
             } else {
                 arr[nx][ny] = arr[cx][cy] + 1;
