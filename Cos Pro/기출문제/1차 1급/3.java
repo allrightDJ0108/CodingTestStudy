@@ -8,27 +8,17 @@ class Solution {
     public int solution(String pos) {
         // Write code here.
         int answer = 0;
-        Queue<int[]> q = new LinkedList<>();
-        int x = -(pos.charAt(1) - 56);
-        int y = pos.charAt(0) - 65;
+        int cx = pos.charAt(1) - '1'; // 개수만 구하면 되므로 정확한 위치가 중요하지 않음
+        int cy = pos.charAt(0) - 'A';
 
-        q.add(new int[]{x,y});
+        for (int i=0; i<8;i++){
+            int nx = cx + dir[i][0];
+            int ny = cy + dir[i][1];
 
-        while(!q.isEmpty()){
-            int[] cur = q.poll();
-            int cx = cur[0];
-            int cy = cur[1];
-
-            for (int i=0; i<8;i++){
-                int nx = cx + dir[i][0];
-                int ny = cy + dir[i][1];
-
-                if (nx >= 0 && nx < 8 && ny >= 0 && ny < 8){
-                    answer++;
-                }
+            if (nx >= 0 && nx < 8 && ny >= 0 && ny < 8){
+                answer++;
             }
         }
-
 
         return answer;
     }
