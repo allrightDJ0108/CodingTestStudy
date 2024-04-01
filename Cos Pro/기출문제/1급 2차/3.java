@@ -30,11 +30,11 @@ class Solution {
         int nextNum = num;
         while(true){
             nextNum++;
-            int length = func_b(num);
+            int length = func_b(nextNum);
             if(length % 2 != 0)
                 continue;
 
-            int divisor = func_a(length);   //앞 자릿수와 뒷 자릿수 절반 분리
+            int divisor = func_a(length/2);   //앞 자릿수와 뒷 자릿수 절반 분리
             int front = nextNum / divisor;
             int back = nextNum % divisor;
 

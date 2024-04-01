@@ -6,7 +6,6 @@ class Solution {
         // 여기에 코드를 작성해주세요.
         int answer = 0;
 
-        int[] dp = new int[10000];
         // K의 배수가 된다 = K로 나누어 떨어진다
 
         for (int i=0; i<arr.length; i++){
