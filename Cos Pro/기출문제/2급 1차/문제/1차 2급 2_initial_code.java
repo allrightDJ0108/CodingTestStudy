@@ -5,6 +5,14 @@ class Solution {
     public int solution(int price, String grade) {
         // Write code here.
         int answer = 0;
+
+        if (grade.equals("S")){
+            answer = price * 0.95;
+        } else if (grade.equals("G")){
+            answer = price * 0.9;
+        } else {
+            answer = price * 0.85;
+        }
         return answer;
     }    
 

@@ -2,7 +2,7 @@ class Solution {
     public String solution(String characters){
         String result = "";
         result += characters.charAt(0);
-        for (int i = 0; i < characters.length(); i++) {
+        for (int i = 1; i < characters.length(); i++) {//정답
             if (characters.charAt(i - 1) != characters.charAt(i))
                 result += characters.charAt(i);
         }

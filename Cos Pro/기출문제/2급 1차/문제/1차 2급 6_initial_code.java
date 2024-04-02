@@ -5,7 +5,7 @@ class Solution {
             int current = i;
             int temp = count;
             while (current != 0) {
-                if (@@@){
+                if ((current % 10) == 3 || (current % 10) == 6 || (current % 10) == 9 ){
                     count++;
                     System.out.print("pair");
                 }
@@ -19,7 +19,7 @@ class Solution {
         return count;
     }
 
-   // The following is main method to output testcase.
+    // The following is main method to output testcase.
     public static void main(String[] args) {
         Solution sol = new Solution();
         int number = 40;

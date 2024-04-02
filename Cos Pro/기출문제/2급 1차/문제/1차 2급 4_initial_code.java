@@ -1,11 +1,13 @@
 class Solution {
+    // 배열의 자연수 개수
     int[] func_a(int[] arr){
         int[] counter = new int[1001];
         for(int i = 0; i < arr.length; i++)
             counter[arr[i]]++;
         return counter;
     }
-    
+
+    // 많은 것
     int func_b(int[] arr){
         int ret = 0;
         for(int i = 0; i < arr.length; i++){
@@ -14,7 +16,8 @@ class Solution {
         }
         return ret;
     }
-    
+
+    // 적은 것
     int func_c(int[] arr){
         final int INF = 1001;
         int ret = INF;
@@ -25,9 +28,9 @@ class Solution {
         return ret;
     }
     public int solution(int[] arr) {
-        int[] counter = func_@@@(@@@);
-        int maxCnt = func_@@@(@@@);
-        int minCnt = func_@@@(@@@);
+        int[] counter = func_a(arr);
+        int maxCnt = func_b(counter);
+        int minCnt = func_c(counter);
         return maxCnt / minCnt;
     }
 
