@@ -7,7 +7,8 @@ public class Solution {
         words.add(str);
         for (int i = 0; i < 5; i++) {
             if (lev < 5) {
-                create_words(lev, str.concat(vowels[i]));
+                //create_words(lev++, str.concat(vowels[i])); // 오답
+                create_words(lev+1, str.concat(vowels[i])); // 정답
             }
         }
     }

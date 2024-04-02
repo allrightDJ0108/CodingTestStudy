@@ -15,7 +15,7 @@ class Solution {
             int current = i;
             int calculated = 0;
             while (current != 0) {
-                calculated += Math.pow(current % 10, k);
+                calculated += Math.pow(current % 10, k); // pow대신 power사용 가능
                 current = current / 10;
             }
             if (calculated == i)

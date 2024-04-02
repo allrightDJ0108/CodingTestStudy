@@ -9,7 +9,8 @@ class Solution {
     public String solution(int n) {
         String answer = "";
         for(int i = 0; i < n; i++) {
-            answer += Integer.toString(i+1);
+            //answer += Integer.toString(i+1); // 오답
+            answer += Integer.toString(i%9 +1); // 정답
             answer = reverse(answer);
         }
         return answer;
