@@ -9,41 +9,41 @@ class Solution {
         public void underAttack(int damage) { }
     }
 
-    class Monster @@@ {
+    class Monster extends Unit {
         public int attackPoint;
         public Monster(int attackPoint) {
             this.attackPoint = attackPoint;
         }
-        @@@ {
+        public void underAttack(int damage) {
             this.HP -= damage;
         }
-        @@@ {
+        public int attack() {
             return attackPoint;
         }
     }
 
-    class Warrior @@@ {
+    class Warrior extends Unit {
         public int attackPoint;
         public Warrior(int attackPoint) {
             this.attackPoint = attackPoint;
         }
-        @@@ {
+        public void underAttack(int damage) {
             this.HP -= damage;
         }
-        @@@ {
+        public int attack() {
             return attackPoint;
         }
     }
 
-    class Healer @@@ {
+    class Healer extends Unit {
         public int healingPoint;
-        public Healer(int healingPoint) { 
+        public Healer(int healingPoint) {
             this.healingPoint = healingPoint;
         }
-        @@@ {
+        public void underAttack(int damage) {
             this.HP -= damage;
         }
-        @@@ {
+        public void healing(Unit unit) {
             unit.HP += healingPoint;
         }
     }
@@ -51,7 +51,7 @@ class Solution {
         Monster monster = new Monster(monsterAttackPoint);
         Warrior warrior = new Warrior(warriorAttackPoint);
         Healer healer = new Healer(healingPoint);
-        
+
         //전사가 몬스터를 한 번 공격
         monster.underAttack(warrior.attack());
         //몬스터가 전사를 한 번 공격
@@ -79,5 +79,5 @@ class Solution {
         System.out.printf("solution 메소드의 반환 값은 ");
         System.out.printf(Arrays.toString(ret));
         System.out.printf(" 입니다.\n");
-    }   
+    }
 }

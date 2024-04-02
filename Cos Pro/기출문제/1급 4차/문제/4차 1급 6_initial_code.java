@@ -3,7 +3,7 @@ import java.util.Arrays;
 class Solution {
     public int power(int base, int exponent) {
         int val = 1;
-        for (int i = 0; i < exponent; i++) 
+        for (int i = 0; i < exponent; i++)
             val *= base;
         return val;
     }
@@ -15,8 +15,8 @@ class Solution {
             int current = i;
             int calculated = 0;
             while (current != 0) {
-                @@@;
-                @@@;
+                calculated += Math.pow(current % 10, k);
+                current = current / 10;
             }
             if (calculated == i)
                 answer[count++] = i;
@@ -38,5 +38,5 @@ class Solution {
         System.out.printf("solution 메소드의 반환 값은 ");
         System.out.printf(Arrays.toString(ret));
         System.out.printf(" 입니다.\n");
-    }   
+    }
 }

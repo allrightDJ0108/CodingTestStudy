@@ -3,13 +3,13 @@ class Solution {
         if(oneDayPrice * multiDay <= multiDayPrice)
             return n * oneDayPrice;
         else
-            return (n % multiDay) * multiDayPrice + (n / multiDay) * oneDayPrice;
+            return (n % multiDay) * oneDayPrice + (n / multiDay) * multiDayPrice; // 정답
     }
-    
+
     // 아래는 테스트케이스 출력을 해보기 위한 코드입니다. 아래에는 잘못된 부분이 없으니, 위의 코드만 수정하세요.
-    public static void main(String[] args) {        
+    public static void main(String[] args) {
         Solution sol = new Solution();
- 
+
         int oneDayPrice1 = 3;
         int multiDay1 = 5;
         int multiDayPrice1 = 14;

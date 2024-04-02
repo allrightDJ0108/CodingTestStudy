@@ -5,6 +5,20 @@ class Solution {
     public int solution(int a, int b) {
         // 여기에 코드를 작성해주세요.
         int answer = 0;
+
+        int cntA = 0;
+        int cntB = 0;
+        for (int i=a; i<=b; i++){
+
+            for (int j=1; j<=i; j++){
+                if (j % 2 != 0 || j == 2) {
+                    if (Math.pow(j, 2) == i) cntA++;
+                    if (Math.pow(j, 3) == i) cntB++;
+                }
+            }
+        }
+
+        answer = cntA + cntB;
         return answer;
     }
 
