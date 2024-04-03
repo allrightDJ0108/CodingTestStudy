@@ -1,20 +1,24 @@
 class Solution {
+    // 부모 노드 조회
     public int find(int[] parent, int u) {
         if(u == parent[u])
             return u;
 
-        parent[u] = @@@;
+        parent[u] = find(parent, parent[u]);
         return parent[u];
     }
 
     public boolean merge(int[] parent, int u, int v) {
+        // 부모 노드 조회
         u = find(parent, u);
         v = find(parent, v);
 
+        // 부모가 동일하면 사이클 형성
         if(u == v)
             return true;
 
-        @@@;
+        // 부모가 동일하지 않으면 u의 부모 노드를 v로 변경
+        parent[u] = v;
         return false;
     }
 
@@ -23,7 +27,7 @@ class Solution {
 
         int[] parent = new int[n+1];
         for(int i = 1; i <= n; i++)
-            @@@;
+            parent[i] = i;
 
         for(int i = 0; i < connections.length; i++)
             if(merge(parent, connections[i][0], connections[i][1])) {
