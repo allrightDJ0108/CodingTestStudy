@@ -4,7 +4,7 @@ class Solution {
         for(int i = 0; i < 4; i++)
             for(int j = 0; j < 4; j++)
                 for(int k = j + 1; k < 4; k += 2)
-                    answer = Math.max(answer, Math.max(grid[i][j] + grid[j][k], grid[j][k] + grid[k][i]));
+                    answer = Math.max(answer, Math.max(grid[i][j] + grid[i][k], grid[i][j] + grid[k][j]));
         return answer;
     }
 

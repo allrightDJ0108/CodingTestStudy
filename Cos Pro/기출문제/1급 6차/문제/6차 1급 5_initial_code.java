@@ -12,7 +12,7 @@ class Solution {
                 else if(i != 0 && j == 0)
                     coins[i][j] = board[i][j] + coins[i-1][j];
                 else
-                    coins[i][j] = board[i][j] + Math.max(coins[i][j], coins[i-1][j-1]);
+                    coins[i][j] = board[i][j] + Math.max(coins[i][j-1], coins[i-1][j]);
             }
         }
 

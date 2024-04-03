@@ -4,7 +4,35 @@ import java.util.*;
 class Solution {
     public int solution(int n, int[][] garden) {
         // 여기에 코드를 작성해주세요.
+        int[][] dir = {{1,0}, {-1,0}, {0,1}, {0,-1}};
         int answer = 0;
+        Queue<int[]> q = new LinkedList<>();
+
+        for (int i=0; i<n; i++){
+            for (int j=0; j<n; j++){
+                if (garden[i][j] == 1) q.add(new int[]{i,j});
+            }
+        }
+
+        while (!q.isEmpty()){
+            int[] cur = q.poll();
+            int cx = cur[0];
+            int cy = cur[1];
+
+            for (int i=0; i<4; i++){
+                int nx = cx + dir[i][0];
+                int ny = cy + dir[i][1];
+                if (nx >= 0 && nx < n && ny >= 0 && ny < n && garden[nx][ny] == 0){
+                    q.add(new int[]{nx, ny});
+                    garden[nx][ny] = garden[cx][cy] + 1;
+                    answer = Math.max(answer, garden[nx][ny]);
+                }
+            }
+        }
+
+        if (answer <= 0) answer = 0;
+        else answer -= 1;
+
         return answer;
     }
     

@@ -13,7 +13,8 @@ class Solution {
         }
         return ret;
     }
-    
+
+    // 증가, 감소 배열
     int[] func_b(int[] arr){
         int length = arr.length;
         int[] ret = new int[length];
@@ -36,11 +37,11 @@ class Solution {
             return 0;
         return ret;
     }
-    
+
     public int solution(int[] S) {
-        int[] check = func_@@@(@@@);
-        int[] dp = func_@@@(@@@);
-        int answer = func_@@@(@@@);
+        int[] check = func_b(S);
+        int[] dp = func_a(check);
+        int answer = func_c(dp);
         return answer;
     }
 

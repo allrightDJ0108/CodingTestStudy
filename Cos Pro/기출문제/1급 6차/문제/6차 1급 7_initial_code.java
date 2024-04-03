@@ -5,13 +5,13 @@ class Solution {
         for(int i = 0; i < numbers.length; i++){
             int num = numbers[i];
             if(UpDown[i].equals("UP"))
-                left = @@@;
+                left = Math.max(numbers[i] + 1, left);
             else if(UpDown[i].equals("DOWN"))
-                right = @@@;
+                right = Math.min(numbers[i] - 1, right);
             else if(UpDown[i].equals("RIGHT"))
                 return 1;
         }
-        return @@@;
+        return right - left + 1;
     }
 
     // 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.

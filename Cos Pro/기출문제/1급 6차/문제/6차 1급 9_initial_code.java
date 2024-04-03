@@ -6,23 +6,23 @@ class Solution {
         Integer item = stack.remove(stack.size() - 1);
         return item;
     }
-    
+
     void func_b(ArrayList<Integer> stack1, ArrayList<Integer> stack2) {
-        while(!func_@@@(@@@)) {
-            Integer item = func_@@@(@@@);
+        while(!func_c(stack1)) {
+            Integer item = func_a(stack1);
             stack2.add(item);
         }
     }
-    
+
     boolean func_c(ArrayList<Integer> stack) {
         return (stack.size() == 0);
     }
-    
+
     public int solution(ArrayList<Integer> stack1, ArrayList<Integer> stack2) {
-        if(func_@@@(@@@)) {
-            func_@@@(@@@);
+        if(func_c(stack2)) {
+            func_b(stack1, stack2);
         }
-        Integer answer = (int)func_@@@(@@@);
+        Integer answer = (int)func_a(stack2);
         return answer;
     }
     

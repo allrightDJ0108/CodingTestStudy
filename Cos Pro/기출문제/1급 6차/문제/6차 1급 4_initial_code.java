@@ -14,7 +14,7 @@ class Solution {
                 if(i < n/2)
                     cardA[i] = card[i];
                 else
-                    cardB[i] = card[i];
+                    cardB[i-n/2] = card[i];
             }
 
             for(int i = 0; i < n; i++) {

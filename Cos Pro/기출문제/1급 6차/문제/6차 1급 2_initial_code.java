@@ -5,6 +5,22 @@ class Solution {
     public int solution(int K, String[] words) {
         // 여기에 코드를 작성해주세요.
         int answer = 0;
+
+        int size = 0;
+        for (String word : words){
+            if (size == 0) answer++;
+
+            size += word.length();
+
+            if (size == K){
+                size = 0;
+            }
+            else if (size > K){
+                answer++;
+                size = word.length();
+            }
+        }
+
         return answer;
     }
 
