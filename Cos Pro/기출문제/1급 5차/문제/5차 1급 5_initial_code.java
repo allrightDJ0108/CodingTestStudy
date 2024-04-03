@@ -2,11 +2,20 @@
 import java.util.*;
 
 class Solution {
-    public int solution(int[] enemies, int[] armies) {
-        // 여기에 코드를 작성해주세요.
-        int answer = 0;
-        return answer;
-    }
+	public int solution(int[] enemies, int[] armies) {
+		// 여기에 코드를 작성해주세요.
+		int answer = 0;
+
+		for (int i=0; i<armies.length; i++){
+			int temp = 0;
+			for (int j=0; j<enemies.length; j++){
+				if (armies[i] >= enemies[j] ) temp++;
+			}
+
+			answer = Math.max(answer, temp);
+		}
+		return answer;
+	}
 
     // 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.
     public static void main(String[] args) {

@@ -5,7 +5,41 @@ class Solution {
 	public int solution(int number, int target) {
 		// 여기에 코드를 작성해주세요.
 		int answer = 0;
-		return answer;
+
+		int num = number;
+
+		int cnt = 0;
+		int small = 0;
+		int big = 0;
+
+		while (true){
+			num = num * 2;
+			cnt++;
+			if (num >= target) {
+				small = num / 2;
+				big = num;
+				break;
+			}
+		}
+
+		System.out.println(num +" "+cnt+" "+small +" "+big);
+
+		// 차이가 더 작은 쪽을 선택
+		if (target - small <= big - target) {
+			cnt--;
+			while (small != target){
+				small += 1;
+				cnt++;
+			}
+		} else {
+			while (big != target){
+				big -= 1;
+				cnt++;
+			}
+		}
+
+
+		return cnt;
 	}
 
 	// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.

@@ -7,26 +7,27 @@ class Solution {
 		numbers[j] = tmp;
 	}
 
-    public int[] solution(int[] numbers) {
-        int[] answer = {};
+	public int[] solution(int[] numbers) {
+		int[] answer = {};
 
-        Arrays.sort(numbers);
-        int mid = (numbers.length - 1) / 2;
-        swap(numbers, mid, numbers.length-1);
+		Arrays.sort(numbers);
+		int mid = (numbers.length - 1) / 2;
+		swap(numbers, mid, numbers.length-1);
 
-        int left = mid + 1;
-        int right = numbers.length - 1;
-        while(left <= right) {
-        	swap(numbers, left, right);
-        	left = left + 1;
-        	right = right - 1;
-        }
+		int left = mid + 1;
+		int right = numbers.length - 2;
+		while(left <= right) {
+			swap(numbers, left, right);
+			left = left + 1;
+			right = right - 1;
+		}
 
-        answer = numbers;
-        return answer;
-    }
+		answer = numbers;
+		return answer;
+	}
 
-    // 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다. 아래에는 잘못된 부분이 없으니 위의 코드만 수정하세요.
+
+	// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다. 아래에는 잘못된 부분이 없으니 위의 코드만 수정하세요.
     public static void main(String[] args) {
     	Solution sol = new Solution();
     	int[] numbers = {7, 3, 4, 1, 2, 5, 6};

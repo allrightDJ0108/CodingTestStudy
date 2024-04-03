@@ -8,10 +8,10 @@ class Solution {
             number /= 10;
         }
 
-        for(int i = 0; i < 10; i++)
+        for(int i = 9; i >= 0; i--)
             if(numberCount[i] != 0)
                 answer += (String.valueOf(i) + String.valueOf(numberCount[i]));
-        
+
         return answer;
     }
 

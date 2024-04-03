@@ -1,4 +1,5 @@
 class Solution {
+	// 약수 구하기
 	public int func_a(int a, int b) {
 		int mod = a % b;
 
@@ -11,17 +12,19 @@ class Solution {
 		return b;
 	}
 
+	// n의 약수 개수 판별
 	public int func_b(int n) {
 		int answer = 0;
 
 		for(int i = 1; i <= n; i++) {
-			if(func_@@@(@@@))
+			if(func_c(n, i))
 				answer++;
 		}
 
 		return answer;
 	}
 
+	// n의 약수 판별
 	public boolean func_c(int p, int q) {
 		if(p % q == 0)
 			return true;
@@ -32,8 +35,8 @@ class Solution {
 	public int solution(int a, int b, int c) {
 		int answer = 0;
 
-		int gcd = func_@@@(func_@@@(@@@)@@@);
-		answer = func_@@@(@@@);
+		int gcd = func_a(func_a(a,b), c);
+		answer = func_b(gcd);
 
 		return answer;
 	}

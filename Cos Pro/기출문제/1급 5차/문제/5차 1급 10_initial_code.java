@@ -5,13 +5,13 @@ class Solution {
         public Job() {
             this.salary = 0;
         }
-        
+
         public int getSalary() {
             return salary;
         }
     }
 
-    class PartTimeJob @@@ {
+    class PartTimeJob extends Job {
         public int workHour, payPerHour;
 
         public PartTimeJob(int workHour, int payPerHour) {
@@ -19,7 +19,7 @@ class Solution {
             this.payPerHour = payPerHour;
         }
 
-        @@@ {
+        public int getSalary() {
             salary = workHour * payPerHour;
             if(workHour >= 40)
                 salary += (payPerHour * 8);
@@ -28,7 +28,7 @@ class Solution {
         }
     }
 
-    class SalesJob @@@ {
+    class SalesJob extends Job {
         public int salesResult, payPerSale;
 
         public SalesJob(int salesResult, int payPerSale) {
@@ -36,7 +36,7 @@ class Solution {
             this.payPerSale = payPerSale;
         }
 
-        @@@ {
+        public int getSalary() {
             if(salesResult > 20)
                 salary = salesResult * payPerSale * 3;
             else if(salesResult > 10)
