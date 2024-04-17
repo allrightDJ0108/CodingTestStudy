@@ -3,17 +3,18 @@ class Solution {
     
     public int solution(int a, int b, int n) {
         
-        while (n >= a){
-            n = colla(a, b, n);
-        }
-        return answer;
+        return colla(a, b, n);
     }
     
     static int colla(int a, int b, int n){
+        if (n < a) return answer;
+        
         int out = n / a * a;
         int plus = n / a * b;
+        
+        n = n - out + plus;
         answer += plus;
         
-        return n - out + plus;
+        return colla(a, b, n);
     }
 }
