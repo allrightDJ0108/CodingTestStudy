@@ -4,33 +4,26 @@ class Solution {
     static int[][] box;
     
     public int solution(int k, int m, int[] score) {
-        int answer = 0;
         
         int n = score.length;
         
-        Integer[] scores = new Integer[n];
-        for (int i=0; i<n; i++){
-            scores[i] = score[i];
-        }
-        Arrays.sort(scores, (o1,o2)-> o2 - o1);
+        Arrays.sort(score);
         
-        int idx = 0;
-        int sum = 0;
+        int idx = n - 1;
+        int answer = 0;
+        
         while (n >= m){
             // 상자 만들기
             int min = Integer.MAX_VALUE;
-            for (int i=idx; i < idx + m; i++){
-                min = Math.min(min, scores[i]);
+            for (int i = idx; i > idx - m; i--){
+                min = Math.min(min, score[i]);
             }
-            sum += sumScore(min, m);
+            answer += min * m;
             
             n -= m;
-            idx += m;
+            idx -= m;
         }
-        return sum;
+        return answer;
     }
     
-    static int sumScore(int min, int m){
-        return min * m;
-    }
 }
