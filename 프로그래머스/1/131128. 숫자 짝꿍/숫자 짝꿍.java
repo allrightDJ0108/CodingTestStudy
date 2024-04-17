@@ -6,7 +6,6 @@ class Solution {
         
         int[] numX = new int[10];
         int[] numY = new int[10];
-        ArrayList<Integer> list = new ArrayList<>();
         
         // X의 숫자들을 숫자 배열에 카운트
         for (int i=0; i<X.length(); i++){
@@ -22,20 +21,16 @@ class Solution {
         }
         //func(numY);
         
-        // X, Y 배열에서 숫자가 0보다 크면 작은값 만큼 배열에 넣어줌
+        // X, Y 배열에서 숫자가 0보다 크면 작은값 만큼 sb에 넣어줌
+        StringBuilder sb = new StringBuilder();
+        
         for (int i=9; i>=0; i--){
             if (numX[i] > 0 && numY[i] > 0){
                 int min = Math.min(numX[i], numY[i]);
                 for (int j=0; j<min; j++){
-                    list.add(i);
+                    sb.append(i);
                 }
             }
-        }
-        
-        // 배열을 String으로 만들어주기
-        StringBuilder sb = new StringBuilder();
-        for (int i : list){
-            sb.append(i);
         }
         
         answer = sb.toString();
