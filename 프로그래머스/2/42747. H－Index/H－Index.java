@@ -6,10 +6,9 @@ class Solution {
         
         Arrays.sort(citations);
         
+        int h = 0;
         for (int i=0; i<citations.length; i++){
-            int h = citations.length - i;
-            System.out.println(h);
-            
+            h = citations.length - i;
             if (citations[i] >= h){
                 answer = h;
                 break;
